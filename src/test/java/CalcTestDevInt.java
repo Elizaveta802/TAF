@@ -1,12 +1,15 @@
 import data.StaticProvider;
+import net.bytebuddy.implementation.bytecode.Division;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class CalcTestDevInt extends BaseTest {
 
-    @Test ()
+    @Test (expectedExceptions = ArithmeticException.class)
     public void testSDevInt(){
-        Assert.assertEquals(calculator.devInt(6,3), 2, "неверное деление...");}
+        Assert.assertEquals(calculator.devInt(6,0),  "неверное деление...");}
 
     @Test (enabled = false)
     public void testSDevInt1(){
@@ -39,11 +42,17 @@ public class CalcTestDevInt extends BaseTest {
         Assert.assertEquals(calculator.devInt(6,3), 2, "неверное деление...");}
 
     @Test (invocationCount = 3, invocationTimeOut = 1000, threadPoolSize = 3)
-    public void testSDevInt8() throws InterruptedException {
-        Thread.sleep(500);}
-        //Assert.assertEquals(calculator.devInt(6,0), Integer., "неверное деление...");}
+    public void invocationCountTestDevInt() throws InterruptedException {
+        Thread.sleep(500);
+        Assert.assertEquals(calculator.devInt(6,3), 2, "неверное деление...");}
 
-    //@Test (dataProvider = "dataForDev", dataProviderClass=StaticProvider.class)
-    //public void testDataProvider(int a, int b, int expectedResult){
-        //Assert.assertEquals(calculator.devInt(a, b), expectedResult, "неверная сумма...");}
+    @Test (dataProvider = "dataForDevInt", dataProviderClass=StaticProvider.class)
+    public void testDataProvider(int a, int b, int expectedResult){
+        Assert.assertEquals(calculator.devInt(a, b), expectedResult, "неверная сумма...");}
+
+    @Test (expectedExceptions = NullPointerException.class)
+    public void testExceptioneDevInt(){
+        List list = null;
+        int size = list.size();}
 }
+
