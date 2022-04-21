@@ -18,20 +18,32 @@ public class SmokeTest {
 
     }
     @Test
-    public void validateIKTCalculation() throws InterruptedException {
-        driver.get("https://clinic-cvetkov.ru/company/kalkulyator-imt/");
-        WebElement weight = driver.findElement(By.name("weight"));
-        WebElement height = driver.findElement(By.name("height"));
-        WebElement button = driver.findElement(By.id("calc-mass-c"));
+    public void CalculatorOfTheTotalThermalFloor() throws InterruptedException {
+        driver.get("https://kermi-fko.ru/raschety/Calc-Rehau-Solelec.aspx");
+        WebElement weight = driver.findElement(By.id("el_f_width"));
+        WebElement length = driver.findElement(By.id("el_f_lenght"));
+        WebElement buttonRoom = driver.findElement(By.id("room_type"));
+        WebElement kitchenOrBedroom = driver.findElement(By.cssSelector("#room_type option[value='2']"));
+        WebElement buttonHeatingType = driver.findElement(By.id("heating_type"));
+        WebElement heatingForComfort = driver.findElement(By.cssSelector("#heating_type option[value='3']"));
+        WebElement heatLoss = driver.findElement(By.id("el_f_losses"));
+        WebElement button = driver.findElement(By.className("buttHFcalc"));
+
+
         //height.sendKeys(Keys.END); эмуляция  нажатия стандартных клавишь типа F12 и др
 
-        height.sendKeys("183");
-        weight.sendKeys("58");
+        weight.sendKeys("40");
+        length.sendKeys("20");
+        kitchenOrBedroom.click();
+        buttonRoom.click();
+        buttonHeatingType.click();
+        heatingForComfort.click();
+        heatLoss.sendKeys("10");
         button.click();
 
-        Thread.sleep(2000);
-        WebElement result = driver.findElement(By.id("imt-result"));
-        Assert.assertEquals(result.getText(), "17.3 - Недостаточная (дефицит) масса тела");
+        Thread.sleep(3000);
+        WebElement result = driver.findElement(By.id("floor_cable_power"));
+        Assert.assertEquals(result.getText(), "6");
     }
 
     @Test
