@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.openqa.selenium.Keys.DELETE;
+
 public class SmokeTest {
     private WebDriver driver;
 
@@ -29,7 +31,6 @@ public class SmokeTest {
         WebElement heatLoss = driver.findElement(By.id("el_f_losses"));
         WebElement button = driver.findElement(By.className("buttHFcalc"));
 
-
         //height.sendKeys(Keys.END); эмуляция  нажатия стандартных клавишь типа F12 и др
 
         weight.sendKeys("40");
@@ -38,30 +39,77 @@ public class SmokeTest {
         buttonRoom.click();
         buttonHeatingType.click();
         heatingForComfort.click();
-        heatLoss.sendKeys("10");
+        heatLoss.sendKeys("40000");
         button.click();
 
         Thread.sleep(3000);
-        WebElement result = driver.findElement(By.id("floor_cable_power"));
-        Assert.assertEquals(result.getText(), "6");
+        WebElement heatingCablePower = driver.findElement(By.id("floor_cable_power"));
+        Assert.assertEquals(heatingCablePower.getAttribute("value"), "22260");
+        WebElement specificPowerOfHeatingCable = driver.findElement(By.id("spec_floor_cable_power"));
+        Assert.assertEquals(specificPowerOfHeatingCable.getAttribute("value"), "28");
+        //driver.close();
     }
 
     @Test
     public void validateSKF() throws InterruptedException {
         driver.get("http://13gp.by/informatsiya/meditsinskie-kalkulyatory/995-raschet-skorosti-klubochkovoj-filtratsii-skf");
 
-
         WebElement selectWebElement = driver.findElement(By.id("oSex"));
         Select selectSex = new Select(selectWebElement);
 
-
-
         selectSex.selectByIndex(1);
-        Thread.sleep(2000);
-        selectSex.selectByValue("0");
-        Thread.sleep(2000);
-        selectSex.selectByVisibleText("мужской");
-        Thread.sleep(2000);
+        Thread.sleep(3500);
+        //selectSex.selectByValue("0");
+        //Thread.sleep(2000);
+        //selectSex.selectByVisibleText("женский");
+        //Thread.sleep(2000);
+        WebElement creatinine = driver.findElement(By.cssSelector("[name='nCr']"));
+        creatinine.sendKeys("80");
+        WebElement age = driver.findElement(By.id("oAge"));
+        age.sendKeys("38");
+        WebElement oWeight = driver.findElement(By.id("oWeight"));
+        oWeight.sendKeys("55");
+        WebElement growth = driver.findElement(By.id("oHeight"));
+        growth.sendKeys("163");
+        WebElement buttonCalculate = driver.findElement(By.cssSelector("[value='Рассчитать']"));
+        buttonCalculate.click();
+        WebElement result1 = driver.findElement(By.id("txtMDRD"));
+        Assert.assertEquals(result1.getText(), "MDRD: 74 (мл/мин/1,73кв.м)");
+        WebElement result2 = driver.findElement(By.id("txtMDRD1"));
+        Assert.assertEquals(result2.getText(), "ХБП: 2 стадия (при наличии почечного повреждения)");
+        WebElement result3 = driver.findElement(By.id("txtCG"));
+        Assert.assertEquals(result3.getText(), "Cockroft-Gault: 70 (мл/мин)");
+        WebElement result4 = driver.findElement(By.id("txtBSA"));
+        Assert.assertEquals(result4.getText(), "Поверхность тела:1.58 (кв.м)");
+        //driver.close();
+    }
+
+    @Test
+    public void laminateCalculator() throws InterruptedException {
+        driver.get("https://calc.by/building-calculators/laminate.html");
+        Thread.sleep(10000);
+        WebElement roomLength = driver.findElement(By.id("ln_room_id"));
+        roomLength.sendKeys(Keys.CONTROL, "a" + Keys.DELETE);
+        roomLength.sendKeys("500");
+
+        WebElement roomWidth = driver.findElement(By.id("wd_room_id"));
+        roomWidth.sendKeys(Keys.CONTROL, "a" + Keys.DELETE);
+        roomWidth.sendKeys("400");
+
+        WebElement LaminatePanelLength = driver.findElement(By.id("ln_lam_id"));
+        LaminatePanelLength.sendKeys(Keys.CONTROL, "a" + Keys.DELETE);
+        LaminatePanelLength.sendKeys("2000");
+
+        WebElement laminatePanelWidth = driver.findElement(By.id("wd_lam_id"));
+        laminatePanelWidth.sendKeys(Keys.CONTROL, "a" + Keys.DELETE);
+        laminatePanelWidth.sendKeys("200");
+
+        WebElement laminateDirection = driver.findElement(By.cssSelector("[for='direction-laminate-id0']"));
+        laminateDirection.click();
+
+        WebElement calculateLaminate = driver.findElement(By.cssSelector("[class='calc-btn']"));
+        calculateLaminate.click();
+
 
     }
 
