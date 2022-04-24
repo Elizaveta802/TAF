@@ -54,5 +54,7 @@ public class CalcTestDevInt extends BaseTest {
     public void testExceptioneDevInt(){
         List list = null;
         int size = list.size();}
+
+    // ToDo: замечания аналогичные как для CalcTestDevDou.java
 }
 
