@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 import static org.openqa.selenium.Keys.DELETE;
 
 public class SmokeTest {
@@ -87,7 +89,8 @@ public class SmokeTest {
     @Test
     public void laminateCalculator() throws InterruptedException {
         driver.get("https://calc.by/building-calculators/laminate.html");
-        Thread.sleep(10000);
+        //Thread.sleep(2000);
+
         WebElement roomLength = driver.findElement(By.id("ln_room_id"));
         roomLength.sendKeys(Keys.CONTROL, "a" + Keys.DELETE);
         roomLength.sendKeys("500");
@@ -104,11 +107,21 @@ public class SmokeTest {
         laminatePanelWidth.sendKeys(Keys.CONTROL, "a" + Keys.DELETE);
         laminatePanelWidth.sendKeys("200");
 
-        WebElement laminateDirection = driver.findElement(By.cssSelector("[for='direction-laminate-id0']"));
+        WebElement laminateDirection = driver.findElement(By.cssSelector("[for='direction-laminate-id1']"));
         laminateDirection.click();
 
         WebElement calculateLaminate = driver.findElement(By.cssSelector("[class='calc-btn']"));
         calculateLaminate.click();
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        WebElement result5 = driver.findElement(By.cssSelector("[class='calc-result'] div:first-child"));
+        Assert.assertEquals(result5.getText(), "Требуемое количество досок ламината: 53");
+
+        WebElement result6 = driver.findElement(By.cssSelector("[class='calc-result'] div:nth-child(2)"));
+        Assert.assertEquals(result6.getText(), "Количество упаковок ламината: 7");
+
+
 
 
     }
