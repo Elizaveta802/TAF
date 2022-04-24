@@ -4,9 +4,13 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+// Странное название класс! Что мешало его назвать CalcDivDoubleTest? Зачем нужно было сокращать?
 public class CalcTestDevDou extends BaseTest {
 
     @Test (expectedExceptions = ArithmeticException.class)
+    // ToDo: Исправить название метода - не понимаю, что именно он тут проверяет
+    // ToDo: Неверная проверка - данный тест не проходит
+    // ToDo: Форматирование кода в классе - Menu: Code -> Reformat Code
     public void testDevDou(){
         Assert.assertEquals(calculator.devDou(2.0,2.0), "неверное деление...");}
 
@@ -20,6 +24,7 @@ public class CalcTestDevDou extends BaseTest {
 
     @Test (testName = "Test with nameDevDou", dependsOnMethods = "testDevDou")
     public void testSDevDou3(){
+        // ToDo: Почему падение теста стоит до проверки? Она же в таком случае не выполниться...
         Assert.assertTrue(false);
         Assert.assertEquals(calculator.devDou(6.5,0.00), Double.POSITIVE_INFINITY, "неверное деление...");}
 
@@ -53,5 +58,7 @@ public class CalcTestDevDou extends BaseTest {
     public void testExceptioneDevDou(){
         List list = null;
         int size = list.size();}
+
+    // ToDo: Тесты не покрывает все проверки. Отсуствуют проверки на 0?
 }
 
