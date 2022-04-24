@@ -15,12 +15,12 @@ public class BasicLocatorsTest {
     @BeforeMethod
     public void setup(){
         driver = new BrowsersService().getDriver();
-    }
+    }//создает экземпляр хрома (открытие драйвера)
 
     @AfterMethod
     public void tearDown(){
         driver.quit();
-    }
+    }//закрытие браузера
 
     @Test
     public void basicLocatorTest(){
@@ -53,6 +53,4 @@ public class BasicLocatorsTest {
         Thread.sleep(2000);
 
     }
-
-
 }
