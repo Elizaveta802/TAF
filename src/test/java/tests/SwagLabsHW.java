@@ -10,7 +10,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import services.BrowsersService;
 
-public class Task_6 {
+public class SwagLabsHW {
 
         private WebDriver driver;
 
@@ -41,9 +41,6 @@ public class Task_6 {
 
             WebElement itemName = driver.findElement(By.cssSelector(".inventory_item_name"));
             Assert.assertEquals(itemName.getText(), "Sauce Labs Backpack");
-
-
-
-
         }
     }
+
