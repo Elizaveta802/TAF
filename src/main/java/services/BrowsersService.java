@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.time.Duration;
+
 public class BrowsersService {
     private WebDriver driver = null;
 
@@ -43,6 +45,16 @@ public class BrowsersService {
     public WebDriver getDriver() {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
+
+        //driver.manage().window().maximize();
+        driver.manage().deleteAllCookies();
+        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);//ожидание
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0));//ожидание
+
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));//ожидание
+
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));//ожидание
 
         return driver;
     }
