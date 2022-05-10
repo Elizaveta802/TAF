@@ -23,13 +23,28 @@ public class ReadProperties {
         return properties.getProperty("browser");
     }
 
-    public static String username() {
-        return properties.getProperty("username");
+
+    public static String webAddress() {
+        return properties.getProperty("wad");
     }
 
-    public static String password() {
-        return properties.getProperty("password");
+    public static String firstName() {
+        return properties.getProperty("firstname");
     }
+
+    public static String lastName() {
+        return properties.getProperty("lastname");
+    }
+
+    public static String workEmail() {
+        return properties.getProperty("elizaveta.naumovich@mail.ru");
+    }
+
+    public static String organization() {
+        return properties.getProperty("organization");
+    }
+
+
 
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
