@@ -18,6 +18,7 @@ public class BaseTest {
         driver = new BrowsersService().getDriver();
 
         loginStep = new LoginStep(driver);
+
         navigationStep = new NavigationStep(driver);
 
         driver.get(ReadProperties.getUrl());
