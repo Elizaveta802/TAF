@@ -13,9 +13,9 @@ public class JSTest extends BaseTest {
     public void clickJSTest() throws InterruptedException {
         driver.get("http://the-internet.herokuapp.com/jqueryui/menu#");
 
-        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+        JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;//создаем ссылку для интерфейса и назначаем ее экземпляру WebDriver путем приведения типа.
         WebElement webElement = driver.findElement(By.id("ui-id-2"));
-        jsExecutor.executeScript("arguments[0].click();", webElement);
+        jsExecutor.executeScript("arguments[0].click();", webElement);//вызываем метод executeScript, чтобы нажать на кнопку
 
         Thread.sleep(5000);
     }

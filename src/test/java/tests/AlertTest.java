@@ -21,19 +21,13 @@ public class AlertTest extends BaseTest {
     }
 
     @Test
-    public void confirmationAlertTest(){
+    public void confirmationAlertTest() {
         driver.get("http://the-internet.herokuapp.com/javascript_alerts");
-
-        driver.findElement(By.xpath("//button[@onclick = 'jsConfirm()']")).click();
-
-        Alert alert = driver.switchTo().alert();//переключение на этот обьект
-
+        driver.findElement(By.xpath("//li/button[@onclick='jsConfirm()']")).click();
+        Alert alert = driver.switchTo().alert();
         Assert.assertEquals(alert.getText(), "I am a JS Confirm");
-
-        alert.accept();//отклонить
-
-        Assert.assertEquals(driver.findElement(By.id("result")).getText(), "You clicked: Ok");
-
+        alert.accept();
+        Assert.assertEquals(driver.findElement(By.xpath("//p[@id='result']")).getText(), "You clicked: Ok");
     }
 
     @Test
@@ -61,7 +55,8 @@ public class AlertTest extends BaseTest {
         Alert alert = driver.switchTo().alert();//переключение на этот обьект
 
         alert.sendKeys("Test message!!!");
-        alert.accept();//отклонить
+        alert.accept();//принять
+        //alert.dismiss();//отклонить
 
         Assert.assertEquals(driver.findElement(By.id("result")).getText(), "You entered: Test message!!!");
 
