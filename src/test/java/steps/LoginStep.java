@@ -8,7 +8,7 @@ import pages.LoginPage;
 public class LoginStep extends BaseStep {
 
     public LoginStep(WebDriver driver) {
-        super(driver);
+        super(driver);//опракидывание драйвера
     }
 
     public DashboardPage successLogin(String email, String psw) {

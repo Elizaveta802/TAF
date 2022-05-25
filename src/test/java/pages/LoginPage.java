@@ -17,15 +17,13 @@ public class LoginPage extends BasePage {
         super(driver);
     }
 
-    @Override
+    @Override//(активна ли страница)
     protected By getPageIdentifier() {
-        return emailInputLocator;
+        return emailInputLocator;//вернуть эл-т для контретно этой страницы(возвращаем локатор)
     }
 
     // Блок атомарных методов
-    public WebElement getEmailInput() {
-        return driver.findElement(emailInputLocator);
-    }
+    public WebElement getEmailInput() {return driver.findElement(emailInputLocator);}//создать метод, возвращают вебэлемент, отдать наружу
     public WebElement getPswInput() {
         return driver.findElement(pswInputLocator);
     }

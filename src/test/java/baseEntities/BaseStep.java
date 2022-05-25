@@ -15,7 +15,7 @@ public class BaseStep {
     public BaseStep(WebDriver driver) {
         this.driver = driver;
 
-        loginPage = new LoginPage(driver);
+        loginPage = new LoginPage(driver);//инициальзация конструктора
         dashboardPage = new DashboardPage(driver);
         projectsPage = new ProjectsPage(driver);
     }

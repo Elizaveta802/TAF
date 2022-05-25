@@ -7,15 +7,14 @@ import org.openqa.selenium.WebDriver;
 public abstract class BasePage {
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver) {
-
-        this.driver = driver;
+    public BasePage(WebDriver driver) {//конструктор
+        this.driver = driver;//конструктор
     }
 
     protected abstract By getPageIdentifier();
 
     public boolean isPageOpened() {
-        return driver.findElement(getPageIdentifier()).isDisplayed();
+        return driver.findElement(getPageIdentifier()).isDisplayed();//
     }
 
     public void openPageByUrl(String pagePath) {

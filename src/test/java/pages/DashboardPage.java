@@ -14,7 +14,7 @@ public class DashboardPage extends BasePage {
     private By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
 
     public DashboardPage(WebDriver driver) {
-        super(driver);
+        super(driver);//вызываем конструктор из базового пейджа с передачей в него драйвера
 
         topMenuPage = new TopMenuPage(driver);
     }
