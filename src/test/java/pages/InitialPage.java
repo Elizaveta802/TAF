@@ -12,9 +12,8 @@ public class InitialPage {
     private By cookieButtonLocator = By.cssSelector("#gk-cookie-proceed");
     private By tryForFreeButtonLocator = By.linkText("Try for Free");
 
-
-
     //Блок инициализации
+
     public InitialPage(WebDriver driver) {
 
         this.driver = driver;

@@ -6,6 +6,7 @@ import pages.DashboardPage;
 import pages.LoginPage;
 
 public class LoginStep extends BaseStep {
+    //функциональная составляющая
 
     public LoginStep(WebDriver driver) {
         super(driver);//опракидывание драйвера

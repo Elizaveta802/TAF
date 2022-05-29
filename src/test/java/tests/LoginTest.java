@@ -20,7 +20,7 @@ public class LoginTest extends BaseTest {
 
     @Test
     public void incorrectEmailLoginTest() {
-        Assert.assertEquals(
+        Assert.assertEquals(//проверка текста
                 loginStep.incorrectLogin("sdsd", ReadProperties.password()).getErrorTextElement().getText(),
                 "Email/Login or Password is incorrect. Please try again.",
                 "Неверное сообщение об ошибке");

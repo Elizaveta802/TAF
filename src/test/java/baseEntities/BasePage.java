@@ -11,10 +11,10 @@ public abstract class BasePage {
         this.driver = driver;//конструктор
     }
 
-    protected abstract By getPageIdentifier();
+    protected abstract By getPageIdentifier();//заставть вернуть определенный локатор,взять из дочернего метод
 
-    public boolean isPageOpened() {
-        return driver.findElement(getPageIdentifier()).isDisplayed();//
+    public boolean isPageOpened() {//видна ли страница
+        return driver.findElement(getPageIdentifier()).isDisplayed();
     }
 
     public void openPageByUrl(String pagePath) {
