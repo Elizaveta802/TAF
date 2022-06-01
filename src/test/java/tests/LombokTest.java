@@ -1,6 +1,7 @@
 package tests;
 
 import lombok.Cleanup;
+import lombok.extern.java.Log;
 import lombok.val;
 import lombok.var;
 import models.Person1;
@@ -11,6 +12,8 @@ import org.testng.annotations.Test;
 
 import java.io.*;
 import java.util.ArrayList;
+
+@Log
 
 public class LombokTest {
 
@@ -141,8 +144,7 @@ public class LombokTest {
                 .UUID(2)
                 .build();
 
-        System.out.println(person.toString());
-        System.out.println(person1.toString());
-        System.out.println(person.equals(person1));
+        log.severe(person.toString());
+        log.severe(person1.toString());
     }
 }
