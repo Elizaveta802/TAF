@@ -9,9 +9,9 @@ public class AddMilestonePage extends BasePage {
 
     //блок описания селекторов для элементов
     private By headerTitleLabelAddMilestoneLocator = By.xpath("//div[contains(@class, 'content-header-title page_title') and contains(text(), 'Add Milestone')]");
-
     public By nameInputLocator = By.xpath("//input[@id='name']");
     public By addMilestoneButtonLocator = By.xpath("//button[contains(@class, 'button button-left button-positive button-ok') and contains(text(), 'Add Milestone')]");
+    public By successfullyTextLocator = By.xpath("//div[contains(@class, 'message message-success') and contains(text(), 'Successfully added the new milestone.')]");
 
     @Override
     protected By getPageIdentifier() {
@@ -37,6 +37,11 @@ public class AddMilestonePage extends BasePage {
     public WebElement getAddMilestoneButton(){
 
         return driver.findElement(addMilestoneButtonLocator);
+    }
+
+    public WebElement getSuccessfullyText(){
+
+        return driver.findElement(successfullyTextLocator);
     }
 }
 

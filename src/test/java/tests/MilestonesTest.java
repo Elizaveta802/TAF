@@ -7,29 +7,17 @@ import org.testng.annotations.Test;
 
 public class MilestonesTest extends BaseTest {
 
-
     @Test
-    public void successTransition() {//открытие страницы DashboardPage
-
-        Assert.assertTrue(
-                loginStep.successLogin(
-                                ReadProperties.username(),
-                                ReadProperties.password()
-                        )
-                        .isPageOpened());
-    }
-
-    @Test
-    public void clickOnNewProjectTest(){
+    public void createMilestonesTest(){
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
-        Assert.assertTrue(milestonesStep.clickOnNewProject().isPageOpened());//перейти на страницу New project, проверка клик по New project
-        Assert.assertTrue(milestonesStep.clickOnAddMilestone().isPageOpened());//клик по Add Milestone
+        milestonesStep.clickOnNewProject();//перейти на страницу New project
+        milestonesStep.clickOnAddMilestone();//клик по Add Milestone
+        milestonesStep.writeInAllFieldsMilestone();//вести имя Milestone
 
-        milestonesStep.writeInAllFieldsMilestone();
+        Assert.assertEquals(addMilestonePage.getSuccessfullyText().getText(), "Successfully added the new milestone." );
+        System.out.println("cooll");
 
-        Assert.assertEquals(addMilestonePage.getNameInput().getText(), milestonesStep.name, "Successfully added the new milestone.");
-        System.out.println("Successfully added the new milestone.");
-
+        //Assert.assertEquals(addMilestonesSteps.addNewMilestone(ReadProperties.milestoneName(),"Some Text","Some Text","05/01/2022","05/01/2022").getSuccessMessage().getText(), "Successfully added the new milestone.");
     }
 
 }
