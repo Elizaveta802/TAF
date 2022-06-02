@@ -13,7 +13,7 @@ public class AddMilestonePage extends BasePage {
     public By addMilestoneButtonLocator = By.xpath("//button[contains(@class, 'button button-left button-positive button-ok') and contains(text(), 'Add Milestone')]");
     public By successfullyTextLocator = By.xpath("//div[contains(@class, 'message message-success') and contains(text(), 'Successfully added the new milestone.')]");
     public By visibleMilestoneLocator = By.xpath("//a[text()='TestOne']");
-    public By descriptionLocator = By.className("form-control field-editor form-control-full");
+    public By descriptionLocator = By.cssSelector("[class='form-control field-editor form-control-full ']");
 
     @Override
     protected By getPageIdentifier() {

@@ -24,4 +24,24 @@ public class MilestonesTest extends BaseTest {
         Assert.assertEquals(addMilestonePage.getVisibleMilestone().getText(), "TestOne");
     }
 
+    @Test
+    public void updateMilestonesTest(){
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        milestonesStep.clickOnMyProject();//перейти на страницу My project
+        milestonesStep.updatesMilestone();
+
+        Assert.assertEquals(updateMilestonePage.getSuccessfullyUpdated().getText(), "Successfully updated the milestone.");
+    }
+
+    @Test
+    public void deleteMilestoneTest (){
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        milestonesStep.clickOnMyProject();
+        milestonesStep.deleteMilestone();
+
+        Assert.assertEquals(milestonesPage.getSuccessfullyDeleted().getText(), "Successfully deleted the milestone (s).");
+
+
+
+    }
 }
