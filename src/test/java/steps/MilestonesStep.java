@@ -3,10 +3,13 @@ package steps;
 import baseEntities.BaseStep;
 import org.openqa.selenium.WebDriver;
 import pages.AddMilestonePage;
-import pages.NewProjectPage;
+import pages.DashboardPage;
+import pages.MyProjectPage;
 
 public class MilestonesStep extends BaseStep {
+    public String nameAddProject = "My Project";
     public String name = "TestOne";
+    public String description = "I created Milestones";
 
     public MilestonesStep(WebDriver driver) {
         super(driver);
@@ -14,17 +17,27 @@ public class MilestonesStep extends BaseStep {
 
     //ФУНКЦИОНАЛЬНОСТЬ
 
-    //нажать на ссылку New project
-    public NewProjectPage clickOnNewProject(){
+    public DashboardPage clickAddProject(){//Добавление проекта
+        dashboardPage.getAddProject().click();
+        createAddProjectPage.getNameInputAddProject().sendKeys(nameAddProject);
+        createAddProjectPage.getAddProjectButton().click();
 
-        milestonesPage.getNameProjectLocator().click();
+        return dashboardPage;
+
+    }
+
+
+    public MyProjectPage clickOnMyProject(){//нажать на ссылку My project на DashboardPage
+        dashboardPage.getNameProjectMyProjectOnDashboard().click();
+
         return newProjectPage;
 
     }
 
-    //Add Milestone
-    public AddMilestonePage clickOnAddMilestone(){
+
+    public AddMilestonePage clickOnAddMilestone(){//Add Milestone
         milestonesPage.getAddMilestone().click();
+
         return addMilestonePage;
 
     }
@@ -33,6 +46,7 @@ public class MilestonesStep extends BaseStep {
         addMilestonePage.getNameInput().click();
         addMilestonePage.getNameInput().clear();
         addMilestonePage.getNameInput().sendKeys(name);
+        //addMilestonePage.getDescription().sendKeys(description);
         addMilestonePage.getAddMilestoneButton().click();
 
         return addMilestonePage;

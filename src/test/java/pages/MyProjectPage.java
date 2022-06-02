@@ -5,7 +5,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class NewProjectPage extends BasePage {
+public class MyProjectPage extends BasePage {
 
     //блок описания селекторов для элементов
     private By headerTitleLabelHewProjectLocator = By.xpath("//div[contains(@class, 'content-header-title page_title') and contains(text(), 'New project')]");
@@ -17,7 +17,7 @@ public class NewProjectPage extends BasePage {
     }
 
     //блок инициализации
-    public NewProjectPage(WebDriver driver) {
+    public MyProjectPage(WebDriver driver) {
         super(driver);
     }
 
@@ -26,6 +26,4 @@ public class NewProjectPage extends BasePage {
 
         return driver.findElement(headerTitleLabelHewProjectLocator);
     }
-
-
 }
