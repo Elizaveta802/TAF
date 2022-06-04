@@ -27,27 +27,27 @@ public class AddMilestonePage extends BasePage {
 
     //блок атомарных методов
     public WebElement getHeaderTitleLabelAddMilestone(){
-        return driver.findElement(headerTitleLabelAddMilestoneLocator);
+        return waitsService.waitForExists(headerTitleLabelAddMilestoneLocator);
     }
 
     public WebElement getNameInput(){
-        return driver.findElement(nameInputLocator);
+        return waitsService.waitForExists(nameInputLocator);
     }
 
     public WebElement getAddMilestoneButton(){
-        return driver.findElement(addMilestoneButtonLocator);
+        return waitsService.waitForExists(addMilestoneButtonLocator);
     }
 
     public WebElement getSuccessfullyText(){
-        return driver.findElement(successfullyTextLocator);
+        return waitsService.waitForExists(successfullyTextLocator);
     }
 
     public WebElement getVisibleMilestone(){
-        return driver.findElement(visibleMilestoneLocator);
+        return waitsService.waitForExists(visibleMilestoneLocator);
     }
 
     public WebElement getDescription(){
-        return driver.findElement(descriptionLocator);
+        return waitsService.waitForExists(descriptionLocator);
     }
 }
 

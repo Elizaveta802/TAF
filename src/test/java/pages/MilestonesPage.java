@@ -21,18 +21,18 @@ public class MilestonesPage extends BasePage {
     //Блок атомарных методов
     public WebElement getAddMilestone(){
 
-        return driver.findElement(addMilestoneLocator);
+        return waitsService.waitForExists(addMilestoneLocator);
     }
 
     public WebElement getTestOne(){
-        return driver.findElement(testOneCheckbox);
+        return waitsService.waitForExists(testOneCheckbox);
     }
 
     public WebElement getDelete() {
-        return driver.findElement(deleteButton);
+        return waitsService.waitForExists(deleteButton);
     }
     public WebElement getClickConfirmationOK(){
-        return driver.findElement(clickConfirmationOKButton);
+        return waitsService.waitForExists(clickConfirmationOKButton);
     }
 
     @Override
