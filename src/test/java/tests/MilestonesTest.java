@@ -2,6 +2,7 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -34,12 +35,14 @@ public class MilestonesTest extends BaseTest {
     }
 
     @Test
-    public void deleteMilestoneTest (){
+    public void deleteMilestoneTest () throws InterruptedException {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         milestonesStep.clickOnMyProject();
         milestonesStep.deleteMilestone();
 
-        Assert.assertEquals(milestonesPage.getSuccessfullyDeleted().getText(), "Successfully deleted the milestone (s).");
+        Thread.sleep(2000);
+
+        Assert.assertEquals(driver.findElement(By.cssSelector("[class = 'message message-success']")).getText(), "Successfully deleted the milestone (s).");
 
 
 

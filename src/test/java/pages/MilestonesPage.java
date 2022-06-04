@@ -12,7 +12,6 @@ public class MilestonesPage extends BasePage {
     private By testOneCheckbox = By.cssSelector("[name=entity_milestones]");
     private By deleteButton = By.cssSelector("[class='icon-small-delete ']");
     private By clickConfirmationOKButton = By.xpath("//*[@class = 'ui-dialog ui-widget ui-widget-content ui-corner-all dialog ui-draggable']/descendant::a[contains(text(), 'OK')]");//оси
-    private By SuccessfullyDeletedText = By.cssSelector("[class = 'message message-success']");
 
 
 
@@ -37,9 +36,6 @@ public class MilestonesPage extends BasePage {
     }
     public WebElement getClickConfirmationOK(){
         return driver.findElement(clickConfirmationOKButton);
-    }
-    public WebElement getSuccessfullyDeleted(){
-        return driver.findElement(SuccessfullyDeletedText);
     }
 
     @Override
