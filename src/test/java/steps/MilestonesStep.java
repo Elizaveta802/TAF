@@ -16,9 +16,7 @@ public class MilestonesStep extends BaseStep {
         super(driver);
     }
 
-    //ФУНКЦИОНАЛЬНОСТЬ
-
-    public DashboardPage clickAddProject(){//Добавление проекта
+    public DashboardPage clickAddProject(){
         dashboardPage.getAddProject().click();
         createAddProjectPage.getNameInputAddProject().sendKeys(nameAddProject);
         createAddProjectPage.getAddProjectButton().click();
@@ -26,20 +24,19 @@ public class MilestonesStep extends BaseStep {
         return dashboardPage;
     }
 
-    public MyProjectPage clickOnMyProject(){//нажать на ссылку My project на DashboardPage
+    public MyProjectPage clickOnMyProject(){
         dashboardPage.getNameProjectMyProjectOnDashboard().click();
 
         return myProjectPage;
     }
 
-    public AddMilestonePage clickOnAddMilestone(){//Add Milestone
+    public AddMilestonePage clickOnAddMilestone(){
         milestonesPage.getAddMilestone().click();
-
         return addMilestonePage;
 
     }
 
-    public AddMilestonePage writeInAllFieldsMilestone(){//заполнить поля в Milestone
+    public AddMilestonePage writeInAllFieldsMilestone(){
         addMilestonePage.getNameInput().click();
         addMilestonePage.getNameInput().clear();
         addMilestonePage.getNameInput().sendKeys(name);
@@ -65,11 +62,6 @@ public class MilestonesStep extends BaseStep {
         milestonesPage.getDelete().click();
         milestonesPage.getClickConfirmationOK().click();
 
-
         return myProjectPage;
-
-
-
-
     }
 }

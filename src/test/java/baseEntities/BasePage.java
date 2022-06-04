@@ -7,13 +7,13 @@ import org.openqa.selenium.WebDriver;
 public abstract class BasePage {
     protected WebDriver driver;
 
-    public BasePage(WebDriver driver) {//конструктор
-        this.driver = driver;//конструктор
+    public BasePage(WebDriver driver) {
+        this.driver = driver;
     }
 
-    protected abstract By getPageIdentifier();//заставть вернуть определенный локатор,взять из дочернего метод
+    protected abstract By getPageIdentifier();
 
-    public boolean isPageOpened() {//видна ли страница
+    public boolean isPageOpened() {
         return driver.findElement(getPageIdentifier()).isDisplayed();
     }
 

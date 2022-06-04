@@ -24,7 +24,6 @@ public class MyProjectPage extends BasePage {
 
     //блок атомарных методов
     public WebElement getHeaderTitleLabelHewProject(){
-
         return driver.findElement(headerTitleLabelHewProjectLocator);
     }
     public WebElement getHeaderMilestones(){

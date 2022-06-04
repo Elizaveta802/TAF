@@ -31,10 +31,6 @@ public class ReadProperties {
         return properties.getProperty("password");
     }
 
-    public static String milestoneName() {
-        return properties.getProperty("milestoneName");
-    }
-
     public static boolean isHeadless() {
         return properties.getProperty("headless").equalsIgnoreCase("true");
     }

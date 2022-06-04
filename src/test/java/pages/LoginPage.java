@@ -14,17 +14,17 @@ public class LoginPage extends BasePage {
 
     // Блок иницализации драйвера
     public LoginPage(WebDriver driver) {
-        super(driver);//опракидывание драйвера
+        super(driver);
     }
 
-    @Override//(активна ли страница в данный момент)
+    @Override
     protected By getPageIdentifier() {
-        return emailInputLocator;//вернуть эл-т для контретно этой страницы(возвращаем локатор)
+        return emailInputLocator;
     }
 
     // Блок атомарных методов
     public WebElement getEmailInput() {
-        return driver.findElement(emailInputLocator);}//создать метод, возвращают вебэлемент, отдать наружу
+        return driver.findElement(emailInputLocator);}
 
     public WebElement getPswInput() {
         return driver.findElement(pswInputLocator);
