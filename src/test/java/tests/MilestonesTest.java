@@ -35,12 +35,10 @@ public class MilestonesTest extends BaseTest {
     }
 
     @Test
-    public void deleteMilestoneTest () throws InterruptedException {
+    public void deleteMilestoneTest () {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         milestonesStep.clickOnMyProject();
         milestonesStep.deleteMilestone();
-
-        Thread.sleep(2000);
 
         Assert.assertEquals(driver.findElement(By.cssSelector("[class = 'message message-success']")).getText(), "Successfully deleted the milestone (s).");
 
