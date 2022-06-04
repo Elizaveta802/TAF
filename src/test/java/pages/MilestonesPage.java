@@ -10,20 +10,18 @@ public class MilestonesPage extends BasePage {
     private By nameProjectLocator = By.xpath("//a[contains(@style, 'padding-left: 25px') and contains(text(), 'New project')]");
     private By addMilestoneLocator = By.xpath("//a[contains(@class, 'button button-left button-add') and contains(text(), 'Add')]");
     private By testOneCheckbox = By.cssSelector("[name=entity_milestones]");
-    private By deleteSelectedButton = By.xpath("//span[contains(@class, 'button button-negative button-delete') and contains(text(), 'Delete selected')]");
-    private By clickConfirmationCheckbox = By.id("confirm-check");
-    private By deleteConfirmationButton = By.xpath("//a[contains(@class, 'button button-black button-left button-positive dialog-action-default') and contains(text(), 'Delete')]");
-    private By successfullyDeletedLocator = By.xpath("//div[contains(@class, 'message message-success') and contains(text(), 'Successfully deleted the milestone (s).')]");
+    private By deleteButton = By.cssSelector("[class='icon-small-delete ']");
+    private By clickConfirmationOKButton = By.xpath("//*[@class = 'ui-dialog ui-widget ui-widget-content ui-corner-all dialog ui-draggable']/descendant::a[contains(text(), 'OK')]");//оси
+    private By SuccessfullyDeletedText = By.cssSelector("[class = 'message message-success']");
+
+
+
     //Блок инициализации
     public MilestonesPage(WebDriver driver) {
         super(driver);
     }
 
     //Блок атомарных методов
-    public WebElement getNameProjectLocator(){
-
-        return driver.findElement(nameProjectLocator);
-    }
 
     public WebElement getAddMilestone(){
 
@@ -34,20 +32,15 @@ public class MilestonesPage extends BasePage {
         return driver.findElement(testOneCheckbox);
     }
 
-    public WebElement getDeleteSelected(){
-        return driver.findElement(deleteSelectedButton);
-}
-    public WebElement getClickConfirmation() {
-        return driver.findElement(clickConfirmationCheckbox);
+    public WebElement getDelete() {
+        return driver.findElement(deleteButton);
     }
-
-    public WebElement getDeleteConfirmation(){
-        return driver.findElement(deleteConfirmationButton);
+    public WebElement getClickConfirmationOK(){
+        return driver.findElement(clickConfirmationOKButton);
     }
     public WebElement getSuccessfullyDeleted(){
-        return driver.findElement(successfullyDeletedLocator);
+        return driver.findElement(SuccessfullyDeletedText);
     }
-
 
     @Override
     protected By getPageIdentifier() {

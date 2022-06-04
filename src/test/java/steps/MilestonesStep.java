@@ -62,9 +62,9 @@ public class MilestonesStep extends BaseStep {
     public MyProjectPage deleteMilestone(){
         myProjectPage.getHeaderMilestones().click();
         milestonesPage.getTestOne().click();
-        milestonesPage.getDeleteSelected().click();
-        milestonesPage.getClickConfirmation().click();
-        milestonesPage.getDeleteConfirmation().click();
+        milestonesPage.getDelete().click();
+        milestonesPage.getClickConfirmationOK().click();
+
 
         return myProjectPage;
 
