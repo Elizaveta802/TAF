@@ -7,6 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class WaitsService {
     private WebDriverWait wait;
@@ -22,8 +23,18 @@ public class WaitsService {
     public WebElement waitForVisibilityLocatedBy(By locator){//хочу дождаться визуализации элемента по локатору
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
+    public List<WebElement> waitForAllVisibilityLocatedBy(By locator){//он находит все элементы отображаемые по локатору и возвращает коллекцию
+        return wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+
     public WebElement waitForExists(By locator){
         return wait.until(ExpectedConditions.presenceOfElementLocated(locator));
     }
+
+    public boolean waitForElementInvisible(WebElement element) {//невидимость элемента
+        return wait.until(ExpectedConditions.invisibilityOf(element));
+    }
+
+
 }
 
