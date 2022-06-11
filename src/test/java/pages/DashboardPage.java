@@ -1,20 +1,24 @@
 package pages;
 
 import baseEntities.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class DashboardPage extends BasePage {
     private final static String pagePath = "/index.php?/dashboard";//
 
-    public TopMenuPage topMenuPage;//появление страницы топ меню
+    public TopMenuPage topMenuPage;
 
     // Блок описания селекторов для элементов
-    private By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
-    private By addProjectLocator = By.xpath("//a[contains(@class, 'sidebar-button') and contains(text(), 'Add Project')]");
-    private By nameProjectLocator = By.xpath("//a[contains(@style, 'padding-left: 25px') and contains(text(), 'New project')]");
-    private By nameProjectMyProjectOnDashboardLocator = By.xpath("//a[contains(@style, 'padding-left: 25px') and contains(text(), 'My Project')]");
+    @FindBy(xpath = "//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]")
+    public WebElement headerTitleLabel;
+    @FindBy(xpath = "//a[contains(@class, 'sidebar-button') and contains(text(), 'Add Project')]")
+    public WebElement addProject;
+    @FindBy(xpath = "//a[contains(@style, 'padding-left: 25px') and contains(text(), 'New project')]")
+    public WebElement nameProject;
+    @FindBy(xpath = "//a[contains(@style, 'padding-left: 25px') and contains(text(), 'My Project')]")
+    public WebElement nameProjectMyProjectOnDashboard;
 
 
     //Блок инициализации драйвера
@@ -25,28 +29,11 @@ public class DashboardPage extends BasePage {
     }
 
     @Override//(активна ли страница в данный момент, открылась ли страница )
-    protected By getPageIdentifier() {
-        return headerTitleLabelLocator;
+    protected WebElement getPageIdentifier() {
+        return headerTitleLabel;
     }
 
     public void openPageByUrl() {
         super.openPageByUrl(pagePath);
-    }
-
-    // Блок атомарных методов
-    public WebElement getHeaderTitleLabel() {
-        return driver.findElement(headerTitleLabelLocator);
-    }
-
-    public WebElement getAddProject(){
-        return driver.findElement(addProjectLocator);
-    }
-
-    public WebElement getNameProject(){
-        return driver.findElement(nameProjectLocator);
-    }
-
-    public WebElement getNameProjectMyProjectOnDashboard(){
-        return driver.findElement(nameProjectMyProjectOnDashboardLocator);
     }
 }

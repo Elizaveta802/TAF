@@ -9,7 +9,7 @@ import pages.MyProjectPage;
 public class MilestonesStep extends BaseStep {
     public String nameAddProject = "My Project";
     public String name = "TestOne";
-    public String description = "I created Milestones";
+    public String descriptionText = "I created Milestones";
     public String updateDescription = "I changed Milestones";
 
     public MilestonesStep(WebDriver driver) {
@@ -17,50 +17,50 @@ public class MilestonesStep extends BaseStep {
     }
 
     public DashboardPage clickAddProject(){
-        dashboardPage.getAddProject().click();
-        createAddProjectPage.getNameInputAddProject().sendKeys(nameAddProject);
-        createAddProjectPage.getAddProjectButton().click();
+        dashboardPage.addProject.click();
+        createAddProjectPage.nameInputAddProject.sendKeys(nameAddProject);
+        createAddProjectPage.addProjectButton.click();
 
         return dashboardPage;
     }
 
     public MyProjectPage clickOnMyProject(){
-        dashboardPage.getNameProjectMyProjectOnDashboard().click();
+        dashboardPage.nameProjectMyProjectOnDashboard.click();
 
         return myProjectPage;
     }
 
     public AddMilestonePage clickOnAddMilestone(){
-        milestonesPage.getAddMilestone().click();
+        milestonesPage.addMilestone.click();
         return addMilestonePage;
 
     }
 
     public AddMilestonePage writeInAllFieldsMilestone(){
-        addMilestonePage.getNameInput().click();
-        addMilestonePage.getNameInput().clear();
-        addMilestonePage.getNameInput().sendKeys(name);
-        addMilestonePage.getDescription().sendKeys(description);
-        addMilestonePage.getAddMilestoneButton().click();
+        addMilestonePage.nameInput.click();
+        addMilestonePage.nameInput.clear();
+        addMilestonePage.nameInput.sendKeys(name);
+        addMilestonePage.descriptionText.sendKeys(descriptionText);
+        addMilestonePage.addMilestoneAddButton.click();
 
         return addMilestonePage;
     }
 
     public MyProjectPage updatesMilestone(){
-        myProjectPage.getHeaderMilestones().click();
-        addMilestonePage.getVisibleMilestone().click();
-        updateMilestonePage.getEditMilestone().click();
-        addMilestonePage.getDescription().clear();
-        addMilestonePage.getDescription().sendKeys(updateDescription);
-        updateMilestonePage.getSaveMilestone().click();
+        myProjectPage.headerMilestones.click();
+        addMilestonePage.visibleMilestone.click();
+        updateMilestonePage.editMilestone.click();
+        addMilestonePage.descriptionText.clear();
+        addMilestonePage.descriptionText.sendKeys(updateDescription);
+        updateMilestonePage.saveMilestone.click();
 
         return myProjectPage;
     }
     public MyProjectPage deleteMilestone(){
-        myProjectPage.getHeaderMilestones().click();
-        milestonesPage.getTestOne().click();
-        milestonesPage.getDelete().click();
-        milestonesPage.getClickConfirmationOK().click();
+        myProjectPage.headerMilestones.click();
+        milestonesPage.testOneCheckbox.click();
+        milestonesPage.deleteButton.click();
+        milestonesPage.clickConfirmationOKButton.click();
 
         return myProjectPage;
     }

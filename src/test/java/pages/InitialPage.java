@@ -1,33 +1,22 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class InitialPage {
     private WebDriver driver;
 
     //Блок описания селекторов для элементов
 
-    private By cookieButtonLocator = By.cssSelector("#gk-cookie-proceed");
-    private By tryForFreeButtonLocator = By.linkText("Try for Free");
+    @FindBy(css = "#gk-cookie-proceed")
+    public WebElement cookieButton;
+    @FindBy(linkText = "Try for Free")
+    public WebElement tryForFreeButton;
 
     //Блок инициализации
-
     public InitialPage(WebDriver driver) {
-
         this.driver = driver;
     }
-
-    //Блок атомарных методов
-
-    public WebElement getCookieButton(){
-        return driver.findElement(cookieButtonLocator);
-    }
-
-    public WebElement getTryForFreeButton(){
-        return driver.findElement(tryForFreeButtonLocator);
-    }
-
 }
 

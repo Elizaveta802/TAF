@@ -1,53 +1,34 @@
 package pages;
 
 import baseEntities.BasePage;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 
 public class AddMilestonePage extends BasePage {
 
     //блок описания селекторов для элементов
-    private By headerTitleLabelAddMilestoneLocator = By.xpath("//div[contains(@class, 'content-header-title page_title') and contains(text(), 'Add Milestone')]");
-    public By nameInputLocator = By.xpath("//input[@id='name']");
-    public By addMilestoneButtonLocator = By.xpath("//button[contains(@class, 'button button-left button-positive button-ok') and contains(text(), 'Add Milestone')]");
-    public By successfullyTextLocator = By.xpath("//div[contains(@class, 'message message-success') and contains(text(), 'Successfully added the new milestone.')]");
-    public By visibleMilestoneLocator = By.xpath("//a[text()='TestOne']");
-    public By descriptionLocator = By.cssSelector("[class='form-control field-editor form-control-full ']");
+    @FindBy (xpath = "\"//div[contains(@class, 'content-header-title page_title') and contains(text(), 'Add Milestone')]\"" )
+    public WebElement headerTitleLabelAddMilestone;
+    @FindBy (xpath = "//input[@id='name']")
+    public WebElement nameInput;
+    @FindBy (xpath = "//button[contains(@class, 'button button-left button-positive button-ok') and contains(text(), 'Add Milestone')]")
+    public WebElement addMilestoneAddButton;
+    @FindBy (xpath = "//div[contains(@class, 'message message-success') and contains(text(), 'Successfully added the new milestone.')]")
+    public WebElement successfullyText;
+    @FindBy (xpath = "//a[text()='TestOne']")
+    public WebElement visibleMilestone;
+    @FindBy (css = "[class='form-control field-editor form-control-full ']")
+    public WebElement descriptionText;
 
     @Override
-    protected By getPageIdentifier() {
-        return nameInputLocator;
+    protected WebElement getPageIdentifier() {
+        return nameInput;
     }
 
     //блок инициализации
     public AddMilestonePage(WebDriver driver) {
         super(driver);
-    }
-
-    //блок атомарных методов
-    public WebElement getHeaderTitleLabelAddMilestone(){
-        return driver.findElement(headerTitleLabelAddMilestoneLocator);
-    }
-
-    public WebElement getNameInput(){
-        return driver.findElement(nameInputLocator);
-    }
-
-    public WebElement getAddMilestoneButton(){
-        return driver.findElement(addMilestoneButtonLocator);
-    }
-
-    public WebElement getSuccessfullyText(){
-        return driver.findElement(successfullyTextLocator);
-    }
-
-    public WebElement getVisibleMilestone(){
-        return driver.findElement(visibleMilestoneLocator);
-    }
-
-    public WebElement getDescription(){
-        return driver.findElement(descriptionLocator);
     }
 }
 

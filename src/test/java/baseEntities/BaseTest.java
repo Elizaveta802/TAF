@@ -37,7 +37,7 @@ public class BaseTest {
 
         milestonesStep = new MilestonesStep(driver);
 
-
+        milestonesPage = new MilestonesPage(driver);
 
         driver.get(ReadProperties.getUrl());
     }
