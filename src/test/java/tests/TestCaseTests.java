@@ -7,11 +7,15 @@ public class TestCaseTests extends BaseTest {
 
     @Test
     public void successfulTestCaseValidationTest() {
-        // 1. Войти в приложение
-        // 2. Выбрать проект
-        // 3. Перейти на закладку Test Cases
-        // 4. Добавить валидный Test Case
+        // Написать CRUD тесты на Milesnotes:
+        // 1. create Milesnotes
+        // 2. read Milesnotes
+        // 3. update Milesnotes
+        // 4. delete Milesnotes
+        // Для реализации тестов необходимо реализовать необходимы страницы в PageObject
+        // Для реализации тестов необходимо реализовать необходимые steps
 
+//валидный-конкретный
 
     }
 }

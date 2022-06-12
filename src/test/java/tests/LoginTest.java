@@ -1,49 +1,36 @@
 package tests;
 
+import baseEntities.BaseTest;
 import configuration.ReadProperties;
-import org.openqa.selenium.WebDriver;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.Assert;
 import org.testng.annotations.Test;
-import pages.LoginPage;
-import services.BrowsersService;
 
-public class LoginTest {
-    private WebDriver driver;
+public class LoginTest extends BaseTest {
 
-    @BeforeMethod
-    public void setup(){
-        driver = new BrowsersService().getDriver();
-    }
-
-    @AfterMethod
-    public void tearDown(){
-        driver.quit();
+    @Test
+    public void successLoginTest() {
+        Assert.assertTrue(
+                loginStep.successLogin(
+                        ReadProperties.username(),
+                        ReadProperties.password()
+                )
+                        .isPageOpened()
+        );
     }
 
     @Test
-    public void successLoginPage(){
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.getEmailInput().sendKeys(ReadProperties.username());
-        loginPage.getPswInput().sendKeys(ReadProperties.password());
-        loginPage.getLogButtonInput().click();
+    public void incorrectEmailLoginTest() {
+        Assert.assertEquals(//проверка текста
+                loginStep.incorrectLogin("sdsd", ReadProperties.password()).getErrorTextElement().getText(),
+                "Email/Login or Password is incorrect. Please try again.",
+                "Неверное сообщение об ошибке");
     }
 
     @Test
-    public void incorrectEmailLoginPage(){
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.getEmailInput().sendKeys(ReadProperties.username());
-        loginPage.getPswInput().sendKeys(ReadProperties.password());
-        loginPage.getLogButtonInput().click();
+    public void incorrectPswLoginTest() {
+        Assert.assertEquals(
+                loginStep.incorrectLogin(ReadProperties.username(), "123").getErrorTextElement().getText(),
+                "Email/Login or Password is incorrect. Please try again.",
+                "Неверное сообщение об ошибке");
     }
-
-    @Test
-    public void incorrectPswLoginTest(){
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.getEmailInput().sendKeys(ReadProperties.username());
-        loginPage.getPswInput().sendKeys(ReadProperties.password());
-        loginPage.getLogButtonInput().click();
-    }
-
-
 }

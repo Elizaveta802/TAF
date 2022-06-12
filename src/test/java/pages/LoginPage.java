@@ -1,34 +1,40 @@
 package pages;
 
+import baseEntities.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class LoginPage {
-    private WebDriver driver;
-
-    //Блок описания селекторов(локаторов) для элементов
+public class LoginPage extends BasePage {
+    // Блок описания селекторов для элементов
     private By emailInputLocator = By.id("name");
     private By pswInputLocator = By.id("password");
-    private By logButtonInputLocator = By.id("button_primary");
+    private By logInButtonLocator = By.id("button_primary");
+    private By errorTextLocator = By.className("error-text");
 
-    //Блок инициализации
-
-
+    // Блок иницализации драйвера
     public LoginPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
-    //Блок атомарных методов
-    public WebElement getEmailInput(){
-        return driver.findElement(emailInputLocator);
+    @Override
+    protected By getPageIdentifier() {
+        return emailInputLocator;
     }
 
-    public WebElement getPswInput(){
+    // Блок атомарных методов
+    public WebElement getEmailInput() {
+        return driver.findElement(emailInputLocator);}
+
+    public WebElement getPswInput() {
         return driver.findElement(pswInputLocator);
     }
-    public WebElement getLogButtonInput(){
-        return driver.findElement(logButtonInputLocator);
+
+    public WebElement getLogInButton() {
+        return driver.findElement(logInButtonLocator);
     }
 
+    public WebElement getErrorTextElement() {
+        return driver.findElement(errorTextLocator);
+    }
 }

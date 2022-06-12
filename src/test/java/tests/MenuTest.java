@@ -19,5 +19,4 @@ public class MenuTest extends BaseTest {
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
         Assert.assertTrue(navigationStep.navigateToProjectsPage().sideMenuPage.isPageOpened());
     }
-    //
 }
