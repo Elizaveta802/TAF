@@ -9,10 +9,10 @@ public class BaseStep {
     protected DashboardPage dashboardPage;
     protected ProjectsPage projectsPage;
     protected MilestonesPage milestonesPage;
-    protected MyProjectPage myProjectPage;
+    protected ProjectsPage ProjectsPage;
     protected AddMilestonePage addMilestonePage;
-    protected CreateAddProjectPage createAddProjectPage;
     protected UpdateMilestonePage updateMilestonePage;
+    protected CreateAddProjectPage createAddProjectPage;
 
 
     public BaseStep(WebDriver driver) {
@@ -22,9 +22,9 @@ public class BaseStep {
         dashboardPage = new DashboardPage(driver);
         projectsPage = new ProjectsPage(driver);
         milestonesPage = new MilestonesPage(driver);
-        myProjectPage = new MyProjectPage(driver);
-        addMilestonePage = new AddMilestonePage(driver);
+        ProjectsPage = new ProjectsPage(driver);
         createAddProjectPage = new CreateAddProjectPage(driver);
+        addMilestonePage = new AddMilestonePage(driver);
         updateMilestonePage = new UpdateMilestonePage(driver);
     }
 }

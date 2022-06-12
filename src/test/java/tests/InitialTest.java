@@ -28,7 +28,5 @@ public class InitialTest {
         InitialPage initialPage = new InitialPage(driver);
         initialPage.getCookieButton().click();
         initialPage.getTryForFreeButton().click();
-
     }
-
 }
