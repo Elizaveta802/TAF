@@ -8,11 +8,11 @@ public class BaseStep {
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
     protected ProjectsPage projectsPage;
-    protected MilestonesPage milestonesPage;
+    //protected MilestonesPage milestonesPage;
     protected MyProjectPage myProjectPage;
-    protected AddMilestonePage addMilestonePage;
+    //protected AddMilestonePage addMilestonePage;
     protected CreateAddProjectPage createAddProjectPage;
-    protected UpdateMilestonePage updateMilestonePage;
+    //protected UpdateMilestonePage updateMilestonePage;
 
 
     public BaseStep(WebDriver driver) {
@@ -21,10 +21,10 @@ public class BaseStep {
         loginPage = new LoginPage(driver);
         dashboardPage = new DashboardPage(driver);
         projectsPage = new ProjectsPage(driver);
-        milestonesPage = new MilestonesPage(driver);
+        //milestonesPage = new MilestonesPage(driver);
         myProjectPage = new MyProjectPage(driver);
-        addMilestonePage = new AddMilestonePage(driver);
+        //addMilestonePage = new AddMilestonePage(driver);
         createAddProjectPage = new CreateAddProjectPage(driver);
-        updateMilestonePage = new UpdateMilestonePage(driver);
+        //updateMilestonePage = new UpdateMilestonePage(driver);
     }
 }
