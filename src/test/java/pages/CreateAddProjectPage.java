@@ -24,9 +24,6 @@ public class CreateAddProjectPage extends BasePage {
 
 
     //блок атомарных методов
-    public WebElement getHeaderTitleLabelAddProject() {
-        return driver.findElement(headerTitleLabelAddProjectLocator);
-    }
 
     public WebElement getNameInputAddProject(){
         return driver.findElement(nameInputAddProjectLocator);

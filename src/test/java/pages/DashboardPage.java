@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class DashboardPage extends BasePage {
-    private final static String pagePath = "/index.php?/dashboard";//
+    private final static String pagePath = "/index.php?/dashboard";
 
     public TopMenuPage topMenuPage;//появление страницы топ меню
 
@@ -19,12 +19,12 @@ public class DashboardPage extends BasePage {
 
     //Блок инициализации драйвера
     public DashboardPage(WebDriver driver) {
-        super(driver);//вызываем конструктор из базового пейджа с передачей в него драйвера
+        super(driver);
 
         topMenuPage = new TopMenuPage(driver);
     }
 
-    @Override//(активна ли страница в данный момент, открылась ли страница )
+    @Override
     protected By getPageIdentifier() {
         return headerTitleLabelLocator;
     }
@@ -48,5 +48,12 @@ public class DashboardPage extends BasePage {
 
     public WebElement getNameProjectMyProjectOnDashboard(){
         return driver.findElement(nameProjectMyProjectOnDashboardLocator);
+    }
+
+    //блок комплексных методов
+
+    public ProjectsPage openProject(String projectName){
+        //Todo: implement actions
+        return new ProjectsPage(driver);
     }
 }

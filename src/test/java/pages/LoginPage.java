@@ -37,4 +37,28 @@ public class LoginPage extends BasePage {
     public WebElement getErrorTextElement() {
         return driver.findElement(errorTextLocator);
     }
+
+    //блок комплекстных методов
+    public DashboardPage successLogin(String email, String psw) {
+        login(email, psw);
+
+        return new DashboardPage(driver);
+    }
+
+    public LoginPage incorrectLogin(String email, String psw) {
+        login(email, psw);
+
+        return this;
+    }
+
+    private void login(String email, String psw) {
+        getEmailInput().sendKeys(email);
+        getPswInput().sendKeys(psw);
+        getLogInButton().click();
+    }
+
+    public LoginPage logout() {
+
+        return this;
+    }
 }
