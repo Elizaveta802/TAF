@@ -1,9 +1,11 @@
-package tests.api;
+package tests;
 
+import com.google.gson.Gson;
 import configuration.Endpoints;
 import configuration.ReadProperties;
 import io.restassured.http.ContentType;
 import io.restassured.http.Method;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import models.Project;
@@ -17,34 +19,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 
 public class TestRailApiTest extends BaseApiTest {
 
+
     @Test
-    public void getAllProjectsTest() {
+    public void getAllProjectsTest(){
         // Setup request Object
         RequestSpecification httpRequest = given();
         httpRequest.header(HTTP.CONTENT_TYPE, ContentType.JSON);
         httpRequest.auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
-
         // Setup Response Object
         Response response = httpRequest.request(Method.GET, Endpoints.GET_PROJECTS);
-
         // Get Response Status
         int statusCode = response.getStatusCode();
         System.out.println("Status Code: " + statusCode);
+        Assert.assertEquals(statusCode, 200);
         Assert.assertEquals(statusCode, HttpStatus.SC_OK);
 
         // Get Response Body
         String responseBody = response.getBody().asString();
         System.out.println("Response: " + responseBody);
     }
-
     @Test
-    public void getAllProjectsShortTest() {
+    public void getAllProjectsShortTest(){
         given()
-                //.header(HTTP.CONTENT_TYPE, ContentType.JSON)
-                //.auth().preemptive().basic(ReadProperties.username(), ReadProperties.password())
+               // .header(HTTP.CONTENT_TYPE, ContentType.JSON)
+               // .auth().preemptive().basic(ReadProperties.username(),ReadProperties.password())
                 .when()
                 .get(Endpoints.GET_PROJECTS)
                 .then()
@@ -52,11 +55,10 @@ public class TestRailApiTest extends BaseApiTest {
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
-
     @Test
-    public void addProjectTest() {
+    public void addNewProjectApiTest(){
         Project newProject = Project.builder()
-                .name("WP_Test_01")
+                .name("OMGAmazingProjectAAAAAAAAAAAAAAAAAAAAAAAa")
                 .build();
 
         given()
@@ -69,11 +71,10 @@ public class TestRailApiTest extends BaseApiTest {
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
-
     @Test
-    public void addProject2() {
+    public void addProjectApiTest() {
         Project project = Project.builder()
-                .name("WP_Test_02")
+                .name("ProJoJo")
                 .typeOfProject(ProjectType.SINGLE_SUITE_MODE)
                 .build();
 
@@ -89,11 +90,10 @@ public class TestRailApiTest extends BaseApiTest {
                 .log().body()
                 .statusCode(HttpStatus.SC_OK);
     }
-
     @Test
-    public void addProject3() {
+    public void addProjectApiTest1() {
         Project project = Project.builder()
-                .name("WP_Test_03")
+                .name("PRoJecTune")
                 .typeOfProject(ProjectType.MULTIPLE_SUITE_MODE)
                 .build();
 
@@ -110,7 +110,59 @@ public class TestRailApiTest extends BaseApiTest {
                 .statusCode(HttpStatus.SC_OK)
                 .extract()
                 .as(Project.class);
-
         System.out.println(newProject.toString());
     }
+    @Test
+    public void validateNameOfProjectsTest(){
+        given()
+                .when()
+                .get(Endpoints.GET_PROJECTS)
+                .then()
+                .log().status()
+                .log().body()
+                .statusCode(HttpStatus.SC_OK)
+                .body("projects.get(0).id", is(1))
+                .body("projects.get(0).name", equalTo("WP Test"));
+                //.extract()
+               // .jsonPath("$.projects[0].id")
+    }
+    @Test
+    public void validateNameOfProjectsWithJsonPathTest(){
+        JsonPath jsonPath = given()
+                .when()
+                .get(Endpoints.GET_PROJECTS)
+                .then()
+                .statusCode(HttpStatus.SC_OK)
+                .extract()
+                .jsonPath();
+        String name = jsonPath.getString("projects[0].name");
+        int id = jsonPath.getInt("projects[0].id");
+        Assert.assertEquals(name, "WP Test");
+        Assert.assertEquals(id, 1);
+    }
+    @Test
+    public void getExactProject(){
+        given()
+                .pathParam("project_id", 1)
+                .get(Endpoints.GET_PROJECT)
+                .then()
+                .assertThat()
+                .statusCode(HttpStatus.SC_OK)
+                .body("id",is(1))
+                .body("name", equalTo("WP Test"));
+    }
+    @Test
+    public void getExactProjectAsObjectTest(){
+        Response response = given()
+                .pathParam("project_id", 1)
+                .get(Endpoints.GET_PROJECT);
+
+        Project actualProject = new Gson().fromJson(response.getBody().asString(), Project.class);
+        Assert.assertEquals(actualProject.getName(), "WP Test");
+
+
+    }
+
+
+
 }

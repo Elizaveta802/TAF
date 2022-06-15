@@ -1,4 +1,4 @@
-package tests.api;
+package tests;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -11,24 +11,18 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class HttpClientTest {
-
     @Test
     public void simpleApiTest() throws IOException {
         String restURL = "https://reqres.in";
 
         // Create Object and pass the url
         HttpUriRequest request = new HttpGet(restURL);
-        //HttpUriRequest request1 = new HttpPost(restURL);
-
         // send the request
         HttpResponse httpResponse = HttpClientBuilder
                 .create()
                 .build()
                 .execute(request);
-
-        Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(),
-                HttpStatus.SC_OK);
+        Assert.assertEquals(httpResponse.getStatusLine().getStatusCode(), HttpStatus.SC_OK);
     }
-
 
 }
