@@ -36,6 +36,7 @@ public class CustomersTable {
         dataBaseService.executeSQL(createTableSQL);
     }
 
+
     public void addCustomer(String firstName, String lastName, String email, int age) {
         logger.info("Добавляем запись в таблицу");
 
@@ -48,6 +49,12 @@ public class CustomersTable {
 
     public ResultSet getCustomers() {
         String selectSQL = "SELECT * FROM public.Customers ORDER BY id ASC;";
+
+        return dataBaseService.executeQuery(selectSQL);
+    }
+
+    public ResultSet getCustomerById(int id) {
+        String selectSQL = "SELECT * FROM public.Customers  WHERE ID="+ id +" ORDER BY id ASC;";
 
         return dataBaseService.executeQuery(selectSQL);
     }
