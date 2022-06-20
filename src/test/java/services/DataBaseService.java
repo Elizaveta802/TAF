@@ -5,8 +5,6 @@ import org.slf4j.LoggerFactory;
 
 import java.sql.*;
 
-import static java.util.jar.Pack200.Packer.PASS;
-
 
 public class DataBaseService {
     Logger logger = LoggerFactory.getLogger(DataBaseService.class);
@@ -14,7 +12,7 @@ public class DataBaseService {
     static  final String HOST = "localhost";
     static  final String PORT = "5432";
     static  final String USER = "postgres";
-    static  final String PSW = "80275413bprf";
+    static  final String PSW = "80275413Kbprf";
     static final String DATABASE_NAME = "postgres";
 
     static final String JDBC = "jdbc:postgresql://"+HOST+":"+PORT+"/"+DATABASE_NAME;
@@ -31,7 +29,7 @@ public class DataBaseService {
         }
 
         try {
-            connection = DriverManager.getConnection(JDBC, USER, PASS);
+            connection = DriverManager.getConnection(JDBC, USER, PSW);
         } catch (SQLException throwables) {
             logger.info(throwables.toString());
         }

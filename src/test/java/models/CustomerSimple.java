@@ -3,17 +3,18 @@ package models;
 import java.util.Objects;
 
 
-public class Customer {
+public class CustomerSimple {
 
        private int id;
     public String firstName;
     public String lastName;
     public String email;
     public Integer age;
-    public Customer() {
+
+    public CustomerSimple() {
     }
 
-    public Customer(String firstName, String lastName, String email, Integer age) {
+    public CustomerSimple(String firstName, String lastName, String email, Integer age) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -67,7 +68,7 @@ public class Customer {
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
-                ", age=" + age +
+                ", ageName=" + age +
                 '}';
     }
 
@@ -75,7 +76,7 @@ public class Customer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Customer customer = (Customer) o;
+        CustomerSimple customer = (CustomerSimple) o;
         return Objects.equals(getFirstName(), customer.getFirstName()) && Objects.equals(getLastName(), customer.getLastName()) && Objects.equals(getEmail(), customer.getEmail()) && Objects.equals(getAge(), customer.getAge());
     }
 
