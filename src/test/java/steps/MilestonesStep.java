@@ -1,6 +1,7 @@
 package steps;
 
 import baseEntities.BaseStep;
+import io.qameta.allure.Step;
 import org.openqa.selenium.WebDriver;
 import pages.AddMilestonePage;
 import pages.DashboardPage;
@@ -36,6 +37,7 @@ public class MilestonesStep extends BaseStep {
 
     }
 
+    @Step("Добавление Milestone страницы")
     public AddMilestonePage writeInAllFieldsMilestone(){
         addMilestonePage.getNameInput().click();
         addMilestonePage.getNameInput().clear();
@@ -46,6 +48,7 @@ public class MilestonesStep extends BaseStep {
         return addMilestonePage;
     }
 
+    @Step("Изменение Milestone")
     public MyProjectPage updatesMilestone(){
         myProjectPage.getHeaderMilestones().click();
         addMilestonePage.getVisibleMilestone().click();
@@ -56,6 +59,8 @@ public class MilestonesStep extends BaseStep {
 
         return myProjectPage;
     }
+
+    @Step("Удаление Milestone")
     public MyProjectPage deleteMilestone(){
         myProjectPage.getHeaderMilestones().click();
         milestonesPage.getTestOne().click();
