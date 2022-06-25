@@ -5,7 +5,6 @@ import configuration.ReadProperties;
 import io.qameta.allure.Description;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
-import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -47,11 +46,5 @@ public class MilestonesTest extends BaseTest {
         milestonesStep.deleteMilestone();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("[class = 'message message-success']")).getText(), "Successfully deleted the milestone (s).");
-
-        @Step
-    private void step(String user){
-            System.out.println(user);
-        }
-
     }
 }
