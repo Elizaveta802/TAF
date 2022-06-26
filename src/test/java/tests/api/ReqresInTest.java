@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.Method;
@@ -13,7 +13,7 @@ import static io.restassured.RestAssured.given;
 
 public class ReqresInTest {
     @Test
-    public void simpleStepByStepTest(){
+    public void simpleStepByStepApiTest(){
         // Setup RestAssured
         RestAssured.baseURI = "https://reqres.in";
 

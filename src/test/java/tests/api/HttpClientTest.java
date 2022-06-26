@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.HttpStatus;
@@ -11,6 +11,7 @@ import org.testng.annotations.Test;
 import java.io.IOException;
 
 public class HttpClientTest {
+
     @Test
     public void simpleApiTest() throws IOException {
         String restURL = "https://reqres.in";

@@ -1,4 +1,4 @@
-package tests;
+package tests.api;
 
 import com.google.gson.Gson;
 import configuration.Endpoints;
@@ -29,8 +29,9 @@ public class TestRailApiTest extends BaseApiTest {
     public void getAllProjectsTest(){
         // Setup request Object
         RequestSpecification httpRequest = given();
-        httpRequest.header(HTTP.CONTENT_TYPE, ContentType.JSON);
-        httpRequest.auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());
+        httpRequest.header(HTTP.CONTENT_TYPE, ContentType.JSON);//в каком формате будет header
+        httpRequest.auth().preemptive().basic(ReadProperties.username(), ReadProperties.password());//авторизация
+
         // Setup Response Object
         Response response = httpRequest.request(Method.GET, Endpoints.GET_PROJECTS);
         // Get Response Status
@@ -57,11 +58,11 @@ public class TestRailApiTest extends BaseApiTest {
     }
     @Test
     public void addNewProjectApiTest(){
-        Project newProject = Project.builder()
-                .name("OMGAmazingProjectAAAAAAAAAAAAAAAAAAAAAAAa")
+        Project newProject = Project.builder() //модель проекта
+                .name("OMGAmazingProject")
                 .build();
 
-        given()
+        given()  //отправление запроса post
                 .body(String.format("{\n" +
                         "  \"name\": \"%s\"\n" +
                         "}", newProject.getName()))
@@ -97,7 +98,7 @@ public class TestRailApiTest extends BaseApiTest {
                 .typeOfProject(ProjectType.MULTIPLE_SUITE_MODE)
                 .build();
 
-        Map<String, Object> jsonAsMap = new HashMap<>();
+        Map<String, Object> jsonAsMap = new HashMap<>();//мэпа как создатель json  файла
         jsonAsMap.put("name", project.getName());
         jsonAsMap.put("suite_mode", project.getTypeOfProject());
 
@@ -108,9 +109,11 @@ public class TestRailApiTest extends BaseApiTest {
                 .then()
                 .log().body()
                 .statusCode(HttpStatus.SC_OK)
-                .extract()
+                .extract() //десирилизация ответа в нужный объект(Project)
                 .as(Project.class);
+
         System.out.println(newProject.toString());
+
     }
     @Test
     public void validateNameOfProjectsTest(){
@@ -120,8 +123,7 @@ public class TestRailApiTest extends BaseApiTest {
                 .then()
                 .log().status()
                 .log().body()
-                .statusCode(HttpStatus.SC_OK)
-                .body("projects.get(0).id", is(1))
+                .body("projects.get(0).id", is(1))//взять парметр и проверить
                 .body("projects.get(0).name", equalTo("WP Test"));
                 //.extract()
                // .jsonPath("$.projects[0].id")
@@ -153,16 +155,11 @@ public class TestRailApiTest extends BaseApiTest {
     }
     @Test
     public void getExactProjectAsObjectTest(){
-        Response response = given()
+        Response response = given() //все что приходит переносится в переменную Response,
                 .pathParam("project_id", 1)
                 .get(Endpoints.GET_PROJECT);
 
         Project actualProject = new Gson().fromJson(response.getBody().asString(), Project.class);
         Assert.assertEquals(actualProject.getName(), "WP Test");
-
-
     }
-
-
-
 }
