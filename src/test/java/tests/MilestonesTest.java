@@ -53,13 +53,5 @@ public class MilestonesTest extends BaseTest {
                 .withName("Liza")
                         .withDescription("35647595t")
                                 .build();
-        milestonesStep.clickOnMyProject();//перейти на страницу My project
-        milestonesStep.clickOnAddMilestone();//клик по Add Milestone
-        milestonesStep.writeInAllFieldsMilestone();//вести имя Milestone
-
-        Assert.assertEquals(addMilestonePage.getSuccessfullyText().getText(), "Successfully added the new milestone." );
-        Assert.assertEquals(addMilestonePage.getVisibleMilestone().getText(), "TestOne");
     }
-
-
 }

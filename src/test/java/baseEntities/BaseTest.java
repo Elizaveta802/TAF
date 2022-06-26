@@ -41,8 +41,6 @@ public class BaseTest {
 
         dashboardPage = new DashboardPage(driver);
 
-
-
         driver.get(ReadProperties.getUrl());
     }
 
