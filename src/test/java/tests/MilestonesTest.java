@@ -45,13 +45,21 @@ public class MilestonesTest extends BaseTest {
     }
 
     @Test
-    public void createMilestonesBuilderTest(){
+    public void milestoneLombokTest(){
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
-        dashboardPage.getAddProject().click();
+        milestonesStep.clickOnMyProject();
+        milestonesStep.clickOnAddMilestone();
+        MilestoneBuilder milestone = MilestoneBuilder.builder()
+                .name("L_Milestone")
+                .reference("reference")
+                .description("description")
+                .startDate("")
+                .endDate("")
+                .build();
 
-        MilestoneBuilder milestoneBuilder = new MilestoneBuilder.Builder()
-                .withName("Liza")
-                        .withDescription("35647595t")
-                                .build();
+        addMilestonePage.getAddMilestoneButton().click();
+        Assert.assertTrue(milestoneBuilderStep.createMilestones
+                (milestone).isPageOpened());
     }
-}
+    }
+

@@ -10,6 +10,7 @@ import pages.MilestonesPage;
 import pages.UpdateMilestonePage;
 import services.BrowsersService;
 import steps.LoginStep;
+import steps.MilestoneBuilderStep;
 import steps.MilestonesStep;
 import steps.NavigationStep;
 
@@ -22,6 +23,7 @@ public class BaseTest {
     protected UpdateMilestonePage updateMilestonePage;
     protected MilestonesPage milestonesPage;
     protected DashboardPage dashboardPage;
+    protected MilestoneBuilderStep milestoneBuilderStep;
 
     @BeforeMethod
     public void setup() {
@@ -40,6 +42,8 @@ public class BaseTest {
         milestonesStep = new MilestonesStep(driver);
 
         dashboardPage = new DashboardPage(driver);
+
+        milestoneBuilderStep = new MilestoneBuilderStep(driver);
 
         driver.get(ReadProperties.getUrl());
     }

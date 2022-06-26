@@ -14,7 +14,7 @@ public class DashboardPage extends BasePage {
     private By headerTitleLabelLocator = By.xpath("//div[contains(@class, 'content-header-title') and contains(text(), 'All Projects')]");
     private By addProjectLocator = By.xpath("//a[contains(@class, 'sidebar-button') and contains(text(), 'Add Project')]");
     private By nameProjectLocator = By.xpath("//a[contains(@style, 'padding-left: 25px') and contains(text(), 'New project')]");
-    private By nameProjectMyProjectOnDashboardLocator = By.xpath("//a[contains(@style, 'padding-left: 25px') and contains(text(), 'My Project')]");
+    private By nameProjectMyProjectOnDashboardLocator = By.linkText("My Project");
 
 
     //Блок инициализации драйвера

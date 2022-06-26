@@ -13,6 +13,7 @@ public class BaseStep {
     protected AddMilestonePage addMilestonePage;
     protected CreateAddProjectPage createAddProjectPage;
     protected UpdateMilestonePage updateMilestonePage;
+    protected MilestoneBuilderPage milestoneBuilderPage;
 
 
     public BaseStep(WebDriver driver) {
@@ -26,5 +27,6 @@ public class BaseStep {
         addMilestonePage = new AddMilestonePage(driver);
         createAddProjectPage = new CreateAddProjectPage(driver);
         updateMilestonePage = new UpdateMilestonePage(driver);
+        milestoneBuilderPage = new MilestoneBuilderPage(driver);
     }
 }
