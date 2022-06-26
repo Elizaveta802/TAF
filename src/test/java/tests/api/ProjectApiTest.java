@@ -3,8 +3,6 @@ package tests.api;
 
 import helpers.ProjectHelper;
 import models.Project;
-import org.apache.http.HttpStatus;
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class ProjectApiTest extends BaseApiTest {
@@ -23,7 +21,6 @@ public class ProjectApiTest extends BaseApiTest {
     }
     @Test
     public void negativeInvalidProjectTest(){
-        Assert.assertEquals(projectHelper.getProjectResponse(500).getStatusCode(), HttpStatus
         //Assert.assertEquals(projectHelper.getProjectResponse(500).getStatusCode(), HttpStatus.SC_BAD_REQUEST);
 
     }
