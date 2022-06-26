@@ -21,13 +21,13 @@ public class UpdateMilestonePage extends BasePage {
     }
 
     public WebElement getEditMilestone(){
-        return driver.findElement(editMilestoneLocator);
+        return waitsService.waitForExists(editMilestoneLocator);
     }
 
     public WebElement getSaveMilestone(){
-        return driver.findElement(saveMilestoneButton);
+        return waitsService.waitForExists(saveMilestoneButton);
     }
     public WebElement getSuccessfullyUpdated(){
-        return driver.findElement(successfullyUpdatedLocator);
+        return waitsService.waitForExists(successfullyUpdatedLocator);
     }
 }

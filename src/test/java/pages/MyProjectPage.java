@@ -24,10 +24,10 @@ public class MyProjectPage extends BasePage {
 
     //блок атомарных методов
     public WebElement getHeaderTitleLabelHewProject(){
-        return driver.findElement(headerTitleLabelHewProjectLocator);
+        return waitsService.waitForExists(headerTitleLabelHewProjectLocator);
     }
     public WebElement getHeaderMilestones(){
-        return driver.findElement(headerMilestonesLocator);
+        return waitsService.waitForExists(headerMilestonesLocator);
     }
 
 }

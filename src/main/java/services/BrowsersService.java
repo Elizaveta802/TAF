@@ -8,6 +8,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.time.Duration;
+
 public class BrowsersService {
     private WebDriver driver = null;
 
@@ -43,7 +45,12 @@ public class BrowsersService {
     public WebDriver getDriver() {
         driver.manage().window().maximize();
         driver.manage().deleteAllCookies();
-
+        //driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);//ожидание элемента
+        //неявные ожидания - ожидание, указывающее на то какое максимальное количество времени Selenium будет
+        //дожидаться появления элемента.
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(0)); //новый образец
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(40));//время ожидания загрузки страницы
+        driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(60));// время ожидания стрипов, сколько будут обрабатываться скрипты
         return driver;
     }
 }

@@ -2,6 +2,7 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import models.MilestoneBuilder;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -41,8 +42,16 @@ public class MilestonesTest extends BaseTest {
         milestonesStep.deleteMilestone();
 
         Assert.assertEquals(driver.findElement(By.cssSelector("[class = 'message message-success']")).getText(), "Successfully deleted the milestone (s).");
+    }
 
+    @Test
+    public void createMilestonesBuilderTest(){
+        loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        dashboardPage.getAddProject().click();
 
-
+        MilestoneBuilder milestoneBuilder = new MilestoneBuilder.Builder()
+                .withName("Liza")
+                        .withDescription("35647595t")
+                                .build();
     }
 }

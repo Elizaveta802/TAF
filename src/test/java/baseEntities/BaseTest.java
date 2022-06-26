@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import pages.AddMilestonePage;
+import pages.DashboardPage;
 import pages.MilestonesPage;
 import pages.UpdateMilestonePage;
 import services.BrowsersService;
@@ -20,6 +21,7 @@ public class BaseTest {
     protected AddMilestonePage addMilestonePage;
     protected UpdateMilestonePage updateMilestonePage;
     protected MilestonesPage milestonesPage;
+    protected DashboardPage dashboardPage;
 
     @BeforeMethod
     public void setup() {
@@ -37,7 +39,7 @@ public class BaseTest {
 
         milestonesStep = new MilestonesStep(driver);
 
-
+        dashboardPage = new DashboardPage(driver);
 
         driver.get(ReadProperties.getUrl());
     }
