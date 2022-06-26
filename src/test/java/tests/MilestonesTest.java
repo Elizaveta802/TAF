@@ -2,6 +2,7 @@ package tests;
 
 import baseEntities.BaseTest;
 import configuration.ReadProperties;
+import models.MilestoneBuilder;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -46,17 +47,18 @@ public class MilestonesTest extends BaseTest {
     @Test
     public void createMilestonesBuilderTest(){
         loginStep.successLogin(ReadProperties.username(), ReadProperties.password());
+        dashboardPage.getAddProject().click();
 
-//        MilestoneBuilder milestoneBuilder = new MilestoneBuilder.Builder()
-//                .withName("Liza")
-//                        .withDescription("35647595t")
-//                                .build();
-//        milestonesStep.clickOnMyProject();//перейти на страницу My project
-//        milestonesStep.clickOnAddMilestone();//клик по Add Milestone
-//        milestonesStep.writeInAllFieldsMilestone();//вести имя Milestone
-//
-//        Assert.assertEquals(addMilestonePage.getSuccessfullyText().getText(), "Successfully added the new milestone." );
-//        Assert.assertEquals(addMilestonePage.getVisibleMilestone().getText(), "TestOne");
+        MilestoneBuilder milestoneBuilder = new MilestoneBuilder.Builder()
+                .withName("Liza")
+                        .withDescription("35647595t")
+                                .build();
+        milestonesStep.clickOnMyProject();//перейти на страницу My project
+        milestonesStep.clickOnAddMilestone();//клик по Add Milestone
+        milestonesStep.writeInAllFieldsMilestone();//вести имя Milestone
+
+        Assert.assertEquals(addMilestonePage.getSuccessfullyText().getText(), "Successfully added the new milestone." );
+        Assert.assertEquals(addMilestonePage.getVisibleMilestone().getText(), "TestOne");
     }
 
 
