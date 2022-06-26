@@ -113,7 +113,6 @@ public class TestRailApiTest extends BaseApiTest {
                 .as(Project.class);
 
         System.out.println(newProject.toString());
-
     }
     @Test
     public void validateNameOfProjectsTest(){
